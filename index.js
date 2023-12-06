@@ -111,25 +111,39 @@ function getPlayerChoice() {
     }
 }
 
+//This function is the master function and contains all other functions.
 function game() {
     let scorePlayer = 0;
     let scoreComputer = 0;
 //Variables must be created to store round wins
 // You must use let here instead of const because the variable needs to change
       console.log("Welcome!");
-    for (let i = 0; i < 5; i++) {
-    //a for loop is created to keep track of the number of rounds. There are 5 rounds so i must be set to less than 5
+    //This prints first in the console log
+      for (let i = 0; i < 5; i++) {
+    //a for loop is created to keep track of the number of rounds. There are 5 rounds 
+    //so it must be set to less than 5
         const playerSelection = getPlayerChoice();
         const computerSelection = getComputerChoice();
+        //Variables are created to store input gathered from the input 
+        //returned from the functions getPlayerChoice() and
+        //getComputerChoice()
         console.log(playRound(playerSelection, computerSelection));
+        //This prints the result of the playRound function in the console
         console.log("----------");
         //This places a line between the rounds in the console
         if (checkWinner(playerSelection, computerSelection) == "Player"){
             scorePlayer++;
+        //A conditional is used to check if the result of the checkWinner function
+        //is Player and if it is, to increment the scorePlayer value by 1.
+        //The checkWinner function is used to check this instead of the playRound
+        //function because the playRound function only returns a message after
+        //checking the checkWinner function first
         }
         else if (checkWinner(playerSelection, computerSelection) == "Computer"){
-            scoreComputer++;
-         }
+          scoreComputer++;
+        //A conditional is used to check if the result of the checkWinner function
+        //is computer and if it is, to increment the scoreComputer value by 1.
+        }
     }
     console.log("Game Over");
     //This prints after 5 rounds have been played
